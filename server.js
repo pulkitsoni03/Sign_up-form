@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true
 }));
 
-
 var getHash = ( pass, phone ) => {
     var hmac = crypto.createHmac('sha512', phone);
 
