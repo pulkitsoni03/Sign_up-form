@@ -52,7 +52,7 @@ app.post('/sign_up', function(req, res) {
 
         var dbo = db.db("formdata");
 
-        console.log("connected to database successfully");
+        console.log("connected to database ");
         // creating collection in mongodb
 
         dbo.collection("details").insertOne(data, (err, collection) => {
