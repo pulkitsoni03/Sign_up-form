@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const crypto = require('crypto');
 
 const app = express();
-var url = "mongodb://localhost:27017/formdata";
+// var url = "mongodb://localhost:27017/formdata";
+var url = "mongodb://localhost:\*port number here*\/formdata";
 
 app.use('/public', express.static(__dirname + '/public'));
 app.use( bodyParser.json() );
@@ -48,17 +49,17 @@ app.post('/sign_up', function(req, res) {
     }
 
     mongo.connect(url, function(error , db) {
-        if (error) throw error;
+        if (error) console.log(error);
 
         var dbo = db.db("formdata");
 
         console.log("connected to database successfully");
         // creating collection in mongodb
 
-        dbo.collection("details").insertOne(data, (err, collection) => {
-            if (err) throw err;
+        dbo.collection("details").insertOne(data, (err, docs) => {
+            if (err) console.log(error);
             console.log("record inserted successfully");
-            console.log(collection);
+            console.log(docs);
         });
     });
 
